@@ -44,9 +44,9 @@ export function LogoProvider({ children }) {
       // Expecting an array of { name, size, location }
       const normalized = Array.isArray(data)
         ? data.map((item) => ({
-            name: item.name ?? item.fileName ?? 'unknown',
-            size: item.size ?? item.fileSize ?? 'N/A',
-            location: item.location ?? item.path ?? ''
+            name: item.name || 'unknown',
+            size: item.size ||'N/A',
+            location: item.location || ''
           }))
         : [];
       dispatch({ type: 'FETCH_SUCCESS', payload: normalized });
