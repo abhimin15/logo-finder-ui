@@ -42,8 +42,8 @@ export function LogoProvider({ children }) {
       }
       const data = await response.json();
       // Expecting an array of { name, size, location }
-      const normalized = Array.isArray(data)
-        ? data.map((item) => ({
+      const normalized = Array.isArray(data.data)
+        ? data.data.map((item) => ({
             name: item.name || 'unknown',
             size: item.size ||'N/A',
             location: item.location || ''
