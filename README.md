@@ -1,6 +1,62 @@
-# Getting Started with Create React App
+# Logo Finder UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based web application for managing and viewing logos. This application provides a clean interface for uploading images and viewing existing logos with their metadata.
+
+## Features
+
+- **View Logos**: Display existing logos in a table format with columns for Name, Size, and Location
+- **Upload Images**: Upload new logo images through a file input interface
+- **Tab Navigation**: Clean tab-based interface for switching between viewing and uploading
+- **Real-time Updates**: Automatically refresh logo list after successful uploads
+- **Responsive Design**: Modern black and white theme with responsive layout
+
+## Technology Stack
+
+- **Frontend**: React 19.1.1
+- **State Management**: React Context API with useReducer
+- **Styling**: Inline styles with CSS
+- **API Integration**: Fetch API for backend communication
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Tabs.js          # Main tab navigation component
+│   ├── LogoTable.js     # Table component for displaying logos
+│   └── ImageUpload.js   # Image upload component
+├── store/
+│   └── LogoContext.js   # Context provider for state management
+├── App.js              # Main application component
+└── index.js            # Application entry point
+```
+
+## API Endpoints
+
+The application communicates with a backend API hosted at `https://logo-finder.onrender.com`:
+
+- **GET** `/getlogo` - Retrieve list of existing logos
+- **POST** `/upload-image` - Upload a new image file
+
+### API Response Format
+
+The `/getlogo` endpoint is expected to return an array of logo objects:
+
+```json
+[
+  {
+    "name": "logo-name.png",
+    "size": "48 KB",
+    "location": "/assets/logo-name.png"
+  }
+]
+```
+
+### Upload Format
+
+The `/upload-image` endpoint accepts multipart form data with the image file in the `image` field.
+
+## Getting Started
 
 ## Available Scripts
 
@@ -39,32 +95,34 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Usage
+
+1. **Viewing Logos**: Click on the "View Logo" tab to see existing logos in a table format
+2. **Uploading Images**: 
+   - Click on the "Upload Image" tab
+   - Select an image file using the file input
+   - Click the "Submit" button to upload
+   - The app will automatically switch to the "View Logo" tab and refresh the data
+
+## State Management
+
+The application uses React Context API with useReducer for state management:
+
+- **Logo State**: Manages the list of logos, loading states, and error handling
+- **Actions**: 
+  - `fetchLogos()`: Retrieves logos from the API
+  - `uploadImage(file)`: Uploads a new image file
+
+## Styling
+
+The application uses a clean black and white theme with inline styles for consistency and easy customization.
+
+## Development
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
